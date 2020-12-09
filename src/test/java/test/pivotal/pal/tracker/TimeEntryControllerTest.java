@@ -1,7 +1,7 @@
 package test.pivotal.pal.tracker;
 
 import io.pivotal.pal.tracker.TimeEntry;
-import io.pivotal.pal.tracker.TimeEntryController;
+import io.pivotal.pal.tracker.controller.TimeEntryController;
 import io.pivotal.pal.tracker.TimeEntryRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -122,7 +122,7 @@ public class TimeEntryControllerTest {
     @Test
     public void testDelete() {
         long timeEntryId = 1L;
-        ResponseEntity<Void> response = controller.delete(timeEntryId);
+        ResponseEntity<TimeEntry> response = controller.delete(timeEntryId);
         verify(timeEntryRepository).delete(timeEntryId);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
